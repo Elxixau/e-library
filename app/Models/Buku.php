@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Buku extends Model
+{
+    protected $table = 'buku'; 
+
+    protected $fillable = ['judul', 'penulis', 'tahun_terbit', 'kategori', 'pdf_path', 'gambar_sampul'];
+
+    public $timestamps = true;
+}
