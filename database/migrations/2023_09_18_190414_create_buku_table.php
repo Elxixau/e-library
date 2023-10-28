@@ -6,23 +6,32 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
+     /**
      * Run the migrations.
      *
+     * @return void
      */
     public function up()
     {
-        Schema::table('buku', function (Blueprint $table) {
-            $table->dropColumn('file_buku'); // Hapus kolom file_buku
-            $table->string('pdf_path')->after('sinopsis'); // Tambahkan kolom pdf_path
+        Schema::create('buku', function (Blueprint $table) {
+            $table->id();
+            $table->string('judul');
+            $table->string('penulis');
+            $table->integer('tahun_terbit');
+            $table->text('kategori');
+            $table->string('pdf_path');
+            $table->string('gambar_sampul');
+            $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::table('buku', function (Blueprint $table) {
-            $table->string('file_buku')->after('sinopsis'); // Kembalikan kolom file_buku
-            $table->dropColumn('pdf_path'); // Hapus kolom pdf_path
-        });
+        Schema::dropIfExists('buku');
     }
 };
