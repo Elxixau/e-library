@@ -14,12 +14,13 @@ class AdminController extends Controller
     {  
 
         $jumlahBuku = Buku::count();
-
+        $jumlahAnggota = User::count();
         $monthlyVisitors = Visitor::monthlyVisitors();
         $yearlyVisitors = Visitor::yearlyVisitors();
 
         return view('dashboard/main', [
             'jumlahBuku' => $jumlahBuku,
+            'jumlahAnggota' => $jumlahAnggota,
             'monthlyVisitors' => $monthlyVisitors,
             'yearlyVisitors' => $yearlyVisitors
         ]);
